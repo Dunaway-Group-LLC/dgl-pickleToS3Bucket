@@ -37,7 +37,7 @@ def main(argv=None):
         # try pickleBucket gaicClasses
         pb = getPickleBucket(pbName)     # bucket exists?
         logging.debug("pb %s" % (type(pb)))
-        if type(pb) != S3pickleBucket:  # a pickle bucket or and error code
+        if type(pb) != S3pickleBucket:  # a pickle bucket or an error code
             quit()
         aDict = {}  # An empty dict to try pickle
         try:

@@ -60,13 +60,12 @@ class S3pickleBucket():
             obj = BytesIO
             try:
                 self.s3.Bucket(self.bucketName).download_file(objid, obj)
-                return(0)
+                return(obj)
             except botocore.exceptions.ClientError as e:
                 if e.response['Error']['Code'] == "404":
                     logging.error("Object %s does not exist" % (objid))
-            else:
-                obj = None
-                return(obj)
+                else:
+                    quit(e.response['Error']['Code'])
 
 
 def getPickleBucket(bucketName):
